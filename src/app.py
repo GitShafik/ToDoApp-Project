@@ -1,4 +1,4 @@
-from src import ToDo
+from todo import ToDo
 
 app = ToDo()
 app.add_task("Test")

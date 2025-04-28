@@ -136,3 +136,9 @@ dmypy.json
 
 # Cython debug symbols
 cython_debug/
+
+#ignore db
+*.db
+*.sqlite3
+*.sqlite
+todo.db

@@ -2,7 +2,8 @@ from todo import ToDo
 
 app = ToDo()
 app.add_task("Test")
-app.mark_task_as_done("Test")
+app.mark_task_as_done("Test1")
+app.list_tasks("Test2")
 
 def main():
     while True:
@@ -23,7 +24,9 @@ def main():
             app.add_task(title)
             
         if ch == "2":
-            pass
+            title = input(" lista alla uppgifter: ")
+            app.list_tasks(title)
+            print("Uppgifter listade.")
         
         if ch == "3":
             pass

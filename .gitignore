@@ -142,3 +142,7 @@ cython_debug/
 *.sqlite3
 *.sqlite
 todo.db
+
+
+# Ds_Store
+.DS_Store

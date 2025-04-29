@@ -10,7 +10,7 @@ class ToDo:
         cursor.execute('''
                        CREATE TABLE IF NOT EXISTS tasks
                           (id INTEGER PRIMARY KEY,
-                            title TEXT NOT NULL)
+                            title TEXT NOT NULL, priority TEXT, completed BOOLEAN DEFAULT 0);
                           ''')  
         self.conn.commit()  
         
@@ -22,3 +22,16 @@ class ToDo:
                        ''', (title,))
         self.conn.commit()
         
+    def list_tasks(self):
+        cursor = self.conn.cursor()
+        cursor.execute("select * from tasks")
+        return cursor.fetchall()
+
+    def mark_complete(self, task_id):
+        cursor = self.conn.cursor()
+        cursor.execute('''
+                       UPDATE tasks
+                       SET completed = 1
+                       WHERE id = ?;
+                       ''', (task_id,))
+        self.conn.commit()

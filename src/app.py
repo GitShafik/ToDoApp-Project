@@ -26,6 +26,7 @@ def main():
         if ch == "2":
             title = input(" lista alla uppgifter: ")
             app.list_tasks(title)
+            print("Uppgifter listade.")
         
         if ch == "3":
             pass

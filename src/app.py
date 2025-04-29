@@ -16,5 +16,9 @@ def main():
             print("Avslutar programmet...")
             break
         
+        if ch == "1":
+            title = input("Ange uppgiftens titel: ")
+            app.add_task(title)
+            
 if __name__ == "__main__":
     main()

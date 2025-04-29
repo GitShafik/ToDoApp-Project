@@ -1,16 +1,13 @@
 from todo import ToDo
 
 app = ToDo()
-app.add_task("Test")
-app.mark_task_as_done("Test1")
-app.list_tasks("Test2")
 
 def main():
     while True:
         print("\n=== Todo App ===")
         print("1. Lägg till en ny uppgift")
         print("2. Lista alla uppgifter")
-        print("4. Märk uppgift som klar")
+        print("3. Märk uppgift som klar")
         print("5. Avsluta")
         
         ch = input("Välj ett alternativ (1-5): ")
@@ -19,21 +16,28 @@ def main():
             print("Avslutar programmet...")
             break
         
-        if ch == "1":
-            title = input("Ange uppgiftens titel: ")
-            app.add_task(title)
+        match ch:
+            case "1":
+                title = input("Ange uppgiftens titel: ")
+                app.add_task(title)
+                
+            case "2":
+                list_tasks()
             
-        if ch == "2":
-            title = input(" lista alla uppgifter: ")
-            app.list_tasks(title)
-            print("Uppgifter listade.")
+            case "3":
+                mark_complete()
+                
+def list_tasks():
+    tasks = app.list_tasks()
+    print(tasks)
+    for task in tasks:
+        status = "✓" if task[3] else " "
+        print(f"- [{status}] ID: {task[0]} - {task[1]}")
         
-        if ch == "3":
-            pass
-        
-        if ch == "4":
-            title = input("Märkera uppgift som klar: ")
-            app.mark_task_as_done(title)
+def mark_complete():
+    task_id = input('Ange ID för uppgiften som ska markeras som klar: ')
+    app.mark_complete(task_id)
+    print(f"Uppgift med ID {task_id} markerad som klar.")
             
             
 if __name__ == "__main__":

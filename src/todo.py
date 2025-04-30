@@ -17,9 +17,9 @@ class ToDo:
     def add_task(self, title, priority):
         cursor = self.conn.cursor()
         cursor.execute('''
-                       INSERT INTO tasks (title)
-                       VALUES (?,?);
-                       ''', (title,))
+                       INSERT INTO tasks (title, priority)
+                       VALUES (?, ?);
+                       ''', (title, priority))
         self.conn.commit()
         
     def list_tasks(self):

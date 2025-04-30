@@ -14,11 +14,11 @@ class ToDo:
                           ''')  
         self.conn.commit()  
         
-    def add_task(self, title):
+    def add_task(self, title, priority):
         cursor = self.conn.cursor()
         cursor.execute('''
                        INSERT INTO tasks (title)
-                       VALUES (?);
+                       VALUES (?,?);
                        ''', (title,))
         self.conn.commit()
         

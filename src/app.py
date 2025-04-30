@@ -8,6 +8,7 @@ def main():
         print("1. Lägg till en ny uppgift")
         print("2. Lista alla uppgifter")
         print("3. Märk uppgift som klar")
+        print("4. Ta bort en uppgift")
         print("5. Avsluta")
         
         ch = input("Välj ett alternativ (1-5): ")
@@ -19,7 +20,15 @@ def main():
         match ch:
             case "1":
                 title = input("Ange uppgiftens titel: ")
-                app.add_task(title)
+                print("1. Låg",
+                      "2. Medium",
+                      "3. Hög")
+                priority_in = input("Ange prioritet för uppgiften : ")
+                priority = {"1": "Låg", 
+                            "2": "Medium", 
+                            "3": "Hög"}.get(priority_in, "Medium")
+                
+                app.add_task(title,priority)
                 
             case "2":
                 list_tasks()

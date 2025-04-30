@@ -40,7 +40,7 @@ def main():
                 print(f"\n{Style.BRIGHT}{Fore.LIGHTCYAN_EX}Vill du lägga till fler uppgifter?{Style.RESET_ALL} \n\n" 
                         "Skriv Ja: för att lägga till uppgifter,\n"
                         "Skriv Pm: för påminelse,\n"
-                        "Skriv End: för att Avsluta.")
+                        "Skriv End: för att Avsluta programmet.")
                 
             case "2":
                 list_tasks()

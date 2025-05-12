@@ -45,3 +45,11 @@ class ToDo:
                        WHERE id = ?;
                        ''', (task_id,))
         self.conn.commit() 
+        
+    def delete_task(self, task_id):
+        cursor = self.conn.cursor()
+        cursor.execute('''
+                       DELETE FROM tasks
+                       WHERE id = ?;
+                       ''', (task_id,))
+        self.conn.commit()

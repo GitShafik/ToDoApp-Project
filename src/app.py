@@ -19,8 +19,8 @@ def main():
         ch = input("Välj ett alternativ (1-5): ")
         print()
         
-        if ch == "5":
-            print("Avslutar programmet...")
+        if ch == "6":
+            print(f"{Style.BRIGHT}{Fore.LIGHTCYAN_EX}Avslutar programmet! Välkommen åter!")
             break
         
         match ch:
@@ -52,6 +52,9 @@ def main():
             case "4":
                 unmark_complete()
                 
+            case "5":
+                delete_task()
+                
 def list_tasks():
     tasks = app.list_tasks()
     print(tasks)
@@ -69,6 +72,11 @@ def unmark_complete():
     task_id = input('Ange ID för uppgiften som ska avmarkeras:')
     app.unmark_complete(task_id)
     print(f"{Style.BRIGHT}{Fore.GREEN}Uppgift med ID {task_id} avmarkerad.")
+    
+def delete_task():
+    task_id = input('Ange ID för uppgiften som ska tas bort:')
+    app.delete_task(task_id)
+    print(f"{Style.BRIGHT}{Fore.RED}Uppgift med ID {task_id} borttagen.")
             
             
 if __name__ == "__main__":

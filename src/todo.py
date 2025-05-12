@@ -37,3 +37,11 @@ class ToDo:
                        WHERE id = ?;
                        ''', (task_id,))
         self.conn.commit()
+        
+    def unmark_complete(self, task_id):
+        cursor = self.conn.cursor()
+        cursor.execute(''' UPDATE tasks
+                       SET completed = 0
+                       WHERE id = ?;
+                       ''', (task_id,))
+        self.conn.commit() 

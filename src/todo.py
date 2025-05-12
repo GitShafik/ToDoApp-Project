@@ -15,6 +15,8 @@ class ToDo:
         self.conn.commit()  
         
     def add_task(self, title, priority):
+        if priority not in ["Låg", "Medium", "Hög"]:
+            raise ValueError("Ogiltig prioritet. Vänligen välj Låg, Medium eller Hög.")
         cursor = self.conn.cursor()
         cursor.execute('''
                        INSERT INTO tasks (title, priority)
@@ -35,3 +37,11 @@ class ToDo:
                        WHERE id = ?;
                        ''', (task_id,))
         self.conn.commit()
+        
+    def unmark_complete(self, task_id):
+        cursor = self.conn.cursor()
+        cursor.execute(''' UPDATE tasks
+                       SET completed = 0
+                       WHERE id = ?;
+                       ''', (task_id,))
+        self.conn.commit() 

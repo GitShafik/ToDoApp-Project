@@ -12,8 +12,9 @@ def main():
         print(f"1. {Style.BRIGHT}{Fore.LIGHTCYAN_EX} 📝 Lägg till en ny uppgift")
         print(f"2. {Style.BRIGHT}{Fore.LIGHTCYAN_EX} 📋 Lista alla uppgifter")
         print(f"3. {Style.BRIGHT}{Fore.LIGHTCYAN_EX} ☑️  Markera uppgift som klar")
-        print(f"4. {Style.BRIGHT}{Fore.LIGHTYELLOW_EX} 🅧  Ta bort uppgift")
-        print(f"5. {Style.BRIGHT}{Fore.LIGHTRED_EX} 🔚  Avsluta")
+        print(f"4. {Style.BRIGHT}{Fore.LIGHTCYAN_EX} 🔄  avmarkera uppgift som klar")
+        print(f"5. {Style.BRIGHT}{Fore.LIGHTYELLOW_EX} 🅧  Ta bort uppgift")
+        print(f"6. {Style.BRIGHT}{Fore.LIGHTRED_EX} 🔚  Avsluta")
         print()
         ch = input("Välj ett alternativ (1-5): ")
         print()
@@ -47,6 +48,9 @@ def main():
             
             case "3":
                 mark_complete()
+            
+            case "4":
+                unmark_complete()
                 
 def list_tasks():
     tasks = app.list_tasks()
@@ -56,10 +60,15 @@ def list_tasks():
         print(f"- [{status}] ID: {task[0]} - {task[1]}")
         
 def mark_complete():
-    
     task_id = input('Ange ID för uppgiften som ska markeras som klar: ')
     app.mark_complete(task_id)
-    print(f"Uppgift med ID {task_id} markerad som klar.")
+    print(f"{Style.BRIGHT}{Fore.GREEN}Uppgift med ID {task_id} markerad som klar.")
+
+    
+def unmark_complete():
+    task_id = input('Ange ID för uppgiften som ska avmarkeras:')
+    app.unmark_complete(task_id)
+    print(f"{Style.BRIGHT}{Fore.GREEN}Uppgift med ID {task_id} avmarkerad.")
             
             
 if __name__ == "__main__":

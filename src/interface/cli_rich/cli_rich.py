@@ -16,7 +16,7 @@ class TaskCLIRich:
 
             ch = input("Välj ett alternativ (1-5): ")
 
-            if ch == "5":
+            if ch == "8":
                 print("Avslutar...")
                 break
 
@@ -35,10 +35,26 @@ class TaskCLIRich:
                 case "2":
                     tasks = self.service.get_all_tasks()
                     self._list_tasks(tasks)
-            """case "3":
-                    list_tasks()
-                    task_id = input("ID: ")
-                    app.mark_completed(task_id)"""
+                
+                case "3":
+                    task_id = int(input(" Ange ID för uppgiften som ska markeras klar: "))
+                    self.service.mark_complete(task_id)
+                    
+                case "4":
+                    task_id = int(input("Ange uppgiftens ID för att avmarkera: "))
+                    self.service.unmark_complete(task_id)
+                    
+                case "5":
+                    pass
+                
+                case "6":
+                    pass
+                
+                case "7":
+                    task_id = int(input("ID: "))
+                    task = self.service.get_task_by_id(task_id=task_id)
+                    self._list_tasks([task])
+                    
 
     @staticmethod
     def _list_tasks(tasks: List[Task]) -> None:
@@ -49,10 +65,13 @@ class TaskCLIRich:
     def _display_menu(self):
 
         menu = Panel("""
-            [bold cyan]1.[/] Lägg till uppgift
-            [bold cyan]2.[/] Lista uppgifter
+            [bold cyan]1.[/] Lägg till en ny uppgift
+            [bold cyan]2.[/] Lista alla uppgifter
             [bold cyan]3.[/] Markera uppgift som klar
-            [bold cyan]4.[/] Ta bort uppgift
-            [bold cyan]5.[/] Avsluta
+            [bold cyan]4.[/] Avmarkera uppgift
+            [bold cyan]5.[/] Ta bort uppgift
+            [bold cyan]6.[/] Uppdatera en uppgift
+            [bold cyan]7.[/] Visa en uppgift med ID
+            [bold cyan]8.[/] Avsluta programmet
         """, title="[bold]Todo List App[/]", border_style="cyan")
         self.console.print(menu)

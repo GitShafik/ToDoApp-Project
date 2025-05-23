@@ -11,7 +11,10 @@ class TaskCLI:
             print("\n=== ToDo App ===")
             print("1. Lägg till ny uppgift")
             print("2. Lista alla uppgifter")
-            print("3. Markera uppgift som färdig")
+            print("3. Visa en uppgift med ID")
+            print("4. Markera uppgift som färdig")
+            print("4. Avmarkera uppgift")
+            
             print("5. Avsluta")
 
             ch = input("Välj ett alternativ (1-5): ")

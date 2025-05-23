@@ -37,12 +37,22 @@ class TaskCLIRich:
                     self._list_tasks(tasks)
                 
                 case "3":
+                    task_id = int(input(" Ange ID för task att hämta: "))
+                    task = self.service.get_task_by_id(task_id)
+                    self._list_tasks([task])
+                    
+                case "4":
+                    
+                    
+                
+                case "3.":
                     task_id = int(input(" Ange ID för uppgiften som ska markeras klar: "))
                     self.service.mark_complete(task_id)
                     
-                case "4":
+                case "4.":
                     task_id = int(input("Ange uppgiftens ID för att avmarkera: "))
                     self.service.unmark_complete(task_id)
+                    self._list_tasks([Task])
                     
                 case "5":
                     pass
@@ -67,11 +77,11 @@ class TaskCLIRich:
         menu = Panel("""
             [bold cyan]1.[/] Lägg till en ny uppgift
             [bold cyan]2.[/] Lista alla uppgifter
-            [bold cyan]3.[/] Markera uppgift som klar
-            [bold cyan]4.[/] Avmarkera uppgift
-            [bold cyan]5.[/] Ta bort uppgift
-            [bold cyan]6.[/] Uppdatera en uppgift
-            [bold cyan]7.[/] Visa en uppgift med ID
+            [bold cyan]3.[/] Visa en uppgift med ID
+            [bold cyan]4.[/] Uppdatera en uppgift
+            [bold cyan]5.[/] Markera uppgift som klar
+            [bold cyan]6.[/] Avmarkera uppgift
+            [bold cyan]7.[/] Ta bort uppgift
             [bold cyan]8.[/] Avsluta programmet
         """, title="[bold]Todo List App[/]", border_style="cyan")
         self.console.print(menu)

@@ -32,3 +32,6 @@ class TaskService:
         task = self.task_repository.get_by_id(task_id)
         task.completed = False
         return self.task_repository.update(task)
+    
+    def delete_task(self,task_id: int) -> Task:
+        return self.task_repository.delete(task_id)

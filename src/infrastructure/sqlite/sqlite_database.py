@@ -13,7 +13,7 @@ class SQLiteDatabase:
             self.conn = sqlite3.connect(self.db_name)
         return self.conn
         
-        
+
     def create_table(self):
         with self.connect() as conn:
             cursor = conn.cursor()

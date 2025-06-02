@@ -1,7 +1,7 @@
 from typing import List
 from rich.console import Console
 from rich.panel import Panel
-from application.service import TaskService
+from application.services import TaskService
 from domain.task import Task
 
 

@@ -1,0 +1,43 @@
+{% extends "base.html" %} {% block content %}
+<div class="actions">
+  <a href="/add/" class="button">Lägg till uppgift</a>
+</div>
+
+<h2>Uppgifter</h2>
+{% if tasks %}
+<ul class="task-list">
+  {% for task in tasks %}
+  <li class="task-item {% if task.completed %}task-completed{% endif %}">
+    <form
+      method="get"
+      action="/toggle_completed{{ task.id}}/"
+      style="display: inline"
+    >
+      <input
+        type="checkbox"
+        {%
+        if
+        task.completed%}checked{%
+        endif
+        %}
+        onchange=" this.form.submit()"
+      />
+    </form>
+    <span>{{ task.id }}. {{ task.title }}</span> # OBs.
+    <span class="task-priority-{{ task.priority }}">[{{ task.priority }}]</span>
+    {% if not task.completed %}
+    <a href="/mark_completed/{{ task.id }}/" class="button">Markera som klar</a>
+
+    {% endif %}
+    <a
+      href="/delete/{{ task.id }}/"
+      style="text-decoration: none"
+      class="button-delete"
+      >Radera</a
+    >
+  </li>
+  {% endfor %}
+</ul>
+{% else %}
+<p>Inga uppgifter att visa.</p>
+{% endif %} {% endblock %}

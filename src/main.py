@@ -2,15 +2,18 @@ import os
 from dotenv import load_dotenv
 
 from application.services import TaskService
+"""
 from infrastructure.sqlite.sqlite_database import SQLiteDatabase
 from infrastructure.sqlite.sqlite_tasks_repo import SQLiteTaskRepository
 from presentation.cli.cli import TaskCLI
 from presentation.qtdesktop.qtdesktop import TaskQtDesktop
-
+"""
 
 def main():
-    load_dotenv()
-    
+    load_dotenv(override=True)
+
+    print("UI selected:", os.getenv("UI"))
+
     db_type = os.getenv("DBTYPE", "memory")
     ui_type = os.getenv("UI", "cli")
     
@@ -18,6 +21,8 @@ def main():
         case "postgres":
             pass
         case "sqlite":
+            from infrastructure.sqlite.sqlite_database import SQLiteDatabase
+            from infrastructure.sqlite.sqlite_tasks_repo import SQLiteTaskRepository
             db = SQLiteDatabase()
             repo = SQLiteTaskRepository(db)
         case "memory" | _:
@@ -34,7 +39,9 @@ def main():
             qt_desktop.run()
             
         case "web":
-            pass
+            from presentation.django.django_app import TaskDjango
+            django_app = TaskDjango(service)
+            django_app.run()
         case "api":
             from presentation.api.api import API
             api = API(service)

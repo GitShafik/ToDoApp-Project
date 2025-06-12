@@ -1,0 +1,22 @@
+{% extends "base.html" %} {% block content %}
+<h2>Lägg till uppgift</h2>
+<form method="post" action="/add/">
+  {% csrf_token %}
+  <div class="form-group">
+    <label for="title">Titel:</label>
+    <input type="text" id="title" name="title" required />
+  </div>
+  <div class="form-group">
+    <label for="priority">Prioritet:</label>
+    <select id="priority" name="priority">
+      <option value="low">Låg</option>
+      <option value="medium" selected>Medium</option>
+      <option value="high">Hög</option>
+    </select>
+  </div>
+  <div class="actions">
+    <button type="submit" class="button">Spara</button>
+    <a href="/" class="button">Avbryt</a>
+  </div>
+</form>
+{% endblock %}

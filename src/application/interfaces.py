@@ -22,3 +22,7 @@ class TaskRepository(ABC):
     @abstractmethod
     def delete(self, task: Task) -> Task:
         pass
+    
+    @abstractmethod
+    def mark_complete(self, task_id: int) -> Task:
+        pass

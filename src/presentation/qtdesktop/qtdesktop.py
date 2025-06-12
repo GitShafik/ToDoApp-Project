@@ -173,7 +173,7 @@ class TaskItemWidget(QWidget):
             print(f"Completed: {self.task.completed}")
             # Only update if the state has actually changed
             #if self.task.completed != (state == Qt.CheckState.Checked):
-            self.parent.service.mark_completed(self.task.id)
+            self.parent.service.mark_complete(self.task.id)
 
             # Update the task's completed status locally
             self.task.completed = (state == Qt.CheckState.Checked)
